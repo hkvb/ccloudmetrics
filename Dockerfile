@@ -4,9 +4,9 @@ FROM ${VCW_REGISTRY}hkvb/bash.wrapper:5.0.18
 COPY ./ /vcw/repo/
 
 LABEL co.vcweb.schema-version="1.0" \
-      co.vcweb.label="New InfoMetis Repo" \
-      co.vcweb.description="A new InfoMetis repository." \
+      co.vcweb.label="Dabz/ccloudexporter" \
+      co.vcweb.description="Confluent Cloud metrics exporter" \
       co.vcweb.realm="hkvb" \
-      co.vcweb.image="poc" \
-      co.vcweb.tag="1.0.0}" \
+      co.vcweb.image="ccloudmetrics" \
+      co.vcweb.tag="latest" \
       co.vcweb.maintainer="infometis@vcweb.co"
