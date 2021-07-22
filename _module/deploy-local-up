@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+prefix="vcw_module_hkvb_ccloudmetrics__$1"
+prefix="vcw_module_hkvb_ccloudmetrics__$1"
