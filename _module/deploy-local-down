@@ -4,3 +4,17 @@ prefix="vcw_module_hkvb_ccloudmetrics__$1"
 prefix="vcw_module_hkvb_ccloudmetrics__$1"
 
 executionplane --silent docker container prune --force
+
+if [[ "vcw_module_hkvb_ccloudmetrics__ccmetrics_config_volume" == "$prefix"* ]] ; then
+	continue="true"
+	while [[ "true" == "$continue" ]] ;
+	do
+		executionplane docker volume rm "vcw_module_hkvb_ccloudmetrics__ccmetrics_config_volume"
+		result=$(docker volume ls | grep "vcw_module_hkvb_ccloudmetrics__ccmetrics_config_volume")
+		if [[ "$result" == "" ]] ; then
+			continue="false"
+		else
+			sleep 3;
+		fi
+	done;
+fi

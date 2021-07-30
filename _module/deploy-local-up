@@ -2,3 +2,7 @@
 
 prefix="vcw_module_hkvb_ccloudmetrics__$1"
 prefix="vcw_module_hkvb_ccloudmetrics__$1"
+
+if [[ "vcw_module_hkvb_ccloudmetrics__ccmetrics_config_volume" == "$prefix"* ]] ; then
+	executionplane --silent docker volume create vcw_module_hkvb_ccloudmetrics__ccmetrics_config_volume
+fi

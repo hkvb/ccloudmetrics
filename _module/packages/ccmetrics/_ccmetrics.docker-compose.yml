@@ -1,0 +1,25 @@
+---
+version: '3'
+services:
+
+# START SERVICE hkvb/ccloudmetrics
+  ccloudexporter:
+    image: ${VCW_REGISTRY}dabz/ccloudexporter:latest
+    environment: ['CCLOUD_API_KEY=${CCMETRICS_MODULE_CCLOUD_API_KEY}','CCLOUD_API_SECRET=${CCMETRICS_MODULE_CCLOUD_SECRET_KEY}','CCLOUD_CLUSTER=${CCMETRICS_MODULE_CCLOUD_CLUSTER}','CCLOUD_CONNECTOR=${CCMETRICS_MODULE_CCLOUD_CONNECTOR}','CCLOUD_KSQL=${CCMETRICS_MODULE_CCLOUD_KSQL}','CCLOUD_SCHEMA_REGISTRY=${CCMETRICS_MODULE_CCLOUD_SCHEMA_REGISTRY}']
+    command: [${CCMETRICS_MODULE_CCLOUD_COMMAND_ARGS]
+    volumes: []
+    ports: []
+    networks: [${VCW_STACK_GLOBAL_NETWORKLOCAL}_overlay]
+    deploy:
+      mode: replicated
+      resources:
+        limits:
+          memory: '${CCMETRICS_DEPLOY_RESOURCES_LIMITS_MEMORY}'
+        reservations:
+          memory: '${CCMETRICS_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
+${CCMETRICS_COMPOSE_EXTENSIONS}
+# END SERVICE hkvb/ccloudmetrics
+
+networks: {${VCW_STACK_GLOBAL_NETWORKLOCAL}_overlay: { external: true }}
+volumes: {}
+${VCW_STACK_GLOBAL_COMPOSE_EXTENSIONS}
